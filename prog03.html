@@ -1,7 +1,25 @@
 <body>
-  <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
-    <input type="number" size="" id="a" value="0">
-    +<input type="number" size="" id="b" value="0">
-    =<output name="x" for="a b"></output>
+  <form oninput="x.value=parseInt(a.value)+parseInt(b.value)+parseInt(c.value); 
+                 y.value=parseInt(e.value)+parseInt(f.value)+parseInt(g.value);">
+    
+    <table>
+      <tr>
+        <td>Team</td><td>First Half</td><td>Second Half</td><td>Overtime</td><td>TOTAL</td>
+      </tr>
+      <tr>
+        <td>Team One</td>
+        <td><input type="number" size="5" id="a" value="0"></td>
+        <td><input type="number" size="5" id="b" value="0"></td>
+        <td><input type="number" size="5" id="c" value="0"></td>
+        <td><output name="x" for="a b"/></td>
+      </tr>
+      <tr>
+        <td>Team Two</td>
+        <td><input type="number" size="5" id="e" value="0"></td>
+        <td><input type="number" size="5" id="f" value="0"></td>
+        <td><input type="number" size="5" id="g" value="0"></td>
+        <td><output name="y" for="e f"/></td>
+      </tr>
+      </table>
   </form> 
 </body>
