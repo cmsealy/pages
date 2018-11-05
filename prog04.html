@@ -1,1 +1,229 @@
+<head>
+		<style>
+		label {
+			width: 60px;
+			text-align: right;
+			padding-right: 5px;
+			display: inline-block;
+		}
+		input[type="number"] {
+			width:50px;
+			margin-right: 25px;
+		}
+		</style>
+	</head>
+
+	<body onload="addForm();">
+
+		<h1>Add new input lines to HTML entry form</h1>
+		
+		<p>Enable users to add a row of fields to an HTML input form. In this code, after the HTML loads, addForm() is called. Clicking the Add Line button calls a function, addLine(), which calls addField() once for each field in the new input line. The elements, label and input, are formatted using CSS. </p>
+		
+		<button type="button" onclick="addLine();">Add Line</button>
+		<br />
+		<br />
+		
+		<div id="div1">
+		</div>
+		
+		<h1>Generate array of objects</h1>
+		
+		<p>Loop through the HTML form lines and store the data into an array of objects, where each property of an object contains the data in the input field of the HTML entry form. </p>
+		
+		<button type="button" onclick="genObjectArray();">Generate and Display Array of Objects</button>
+		<br />
+		
+		<div id="div2">
+		</div>
+		
+		<h1>Display table containing data from array of objects</h1>
+		
+		<p>Loop through the HTML form lines and store the data into an array of objects, where each property of an object contains the data in the input field of the HTML entry form. </p>
+		
+		<button type="button" onclick="">Generate and Display Table</button>
+		<br />
+		<br />
+		
+		<div id="div3">
+		</div>
+		
+		<!-- The table, below, shows examples of data. Do not include any HTML-coded table in your code. Instead, use JavaScript to append a table to the div, above. -->
+		<table border="1">
+		  <tr>
+			<th>Local Name</th>
+			<th>Local DOB</th>
+			<th>Local Age</th>
+			<th>Local Zodiac</th>
+		  </tr>
+		  <tr>
+			<td>Deng Xiaoping</td>
+			<td>1904-08-22</td>
+			<td>115</td>
+			<td>Dragon</td>
+		  </tr>
+		  <tr>
+			<td>Dwight Eisenhower</td>
+			<td>10-14-1890</td>
+			<td>128</td>
+			<td>Libra</td>
+		  </tr>
+
+		</table>
+
+		<script>
+		
+// GLOBAL VARIABLES
+
+var currentLine = 0;
+var inputWidth  = 10;
+var objArray    = [];
+
+// FUNCTIONS
+
+/* addForm()
+ * appends an entry form to an HTML element with id="div1"
+ */
+function addForm() {
+	// precondition: HTML must contain <div id="div1"> element
+
+	// create a new form element, and append to div1
+	var newelement = document.createElement("form");
+	newelement.setAttribute("id","form1");
+	var div1 = document.getElementById("div1");
+	div1.appendChild(newelement);
+
+	// create a new fieldset element, and append to form1
+	var newelement = document.createElement("fieldset");
+	newelement.setAttribute("id","fieldset1");
+	var form1 = document.getElementById("form1");
+	form1.appendChild(newelement);
+
+	// create a new legend element, and append to fieldset1
+	var newelement = document.createElement("legend");
+	var textnode = document.createTextNode("People ");
+	newelement.appendChild(textnode);
+	var fieldset1 = document.getElementById("fieldset1");
+	fieldset1.appendChild(newelement);
+
+	// create a new label element, and append to fieldset1
+	var newelement = document.createElement("label");
+	newelement.setAttribute("for","fname"+currentLine);
+	var textnode = document.createTextNode("First");
+	newelement.appendChild(textnode);
+	var fieldset1 = document.getElementById("fieldset1");
+	fieldset1.appendChild(newelement);
+
+	// create a new input element, and append to fieldset1
+	var newelement = document.createElement("input");
+	newelement.setAttribute("name","fname"+currentLine);
+	newelement.setAttribute("id","fname"+currentLine);
+	newelement.setAttribute("type","text");
+	newelement.setAttribute("placeholder","Jane");
+	newelement.setAttribute("size",10);
+	if (currentLine==0) newelement.setAttribute("autofocus","autofocus");
+	var fieldset1 = document.getElementById("fieldset1");
+	fieldset1.appendChild(newelement);
+
+	// add more fields 
+	addField("fieldset1", "lname", "Last", "text", "Doe", inputWidth);
+	addField("fieldset1", "age", "Age", "number", "18", inputWidth);
+	addField("fieldset1", "country", "Country", "text", "USA", inputWidth);
+
+	// add line break 
+	var newelement = document.createElement("br");
+	var fieldset1 = document.getElementById("fieldset1");
+	fieldset1.appendChild(newelement);
+
+	// increment line counter
+	currentLine++;
+}
+
+/* addLine()
+ * inserts all labels and input elements for one row of a form
+ */
+function addLine () {
+	// precondition: inputWidth global variable must be set
+	// precondition: call from addForm() so HTML element with id="fieldset1" exists
+	
+	addField("fieldset1", "fname", "First", "text", "Jane", inputWidth);
+	addField("fieldset1", "lname", "Last", "text", "Doe", inputWidth);
+	addField("fieldset1", "age", "Age", "number", "18", inputWidth);
+	addField("fieldset1", "country", "Country", "text", "USA", inputWidth);
+	var newelement = document.createElement("br");
+	var fieldset1 = document.getElementById("fieldset1");
+	fieldset1.appendChild(newelement);
+	currentLine++;
+}
+
+/* addField()
+ * inserts one label one input element into a row of a form 
+ */
+function addField(formId, namePrefix, labelText, dataType, placeholder, fieldSize) {
+	// precondition: currentLine (global variable) must be set
+	// precondition: objArray[] (global variable) must be declared
+	// precondition: call from addLine() so HTML element with id=formID exists
+
+	// create a new label element, and append to form (or fieldset)
+	var n = document.createElement("label");
+	n.setAttribute("for",namePrefix+currentLine);
+	var t = document.createTextNode(labelText + " " );
+	n.appendChild(t);
+	var f = document.getElementById(formId);
+	f.appendChild(n);
+
+	// create a new input element, and append to form
+	var n = document.createElement("input");
+	n.setAttribute("name",namePrefix+currentLine);
+	n.setAttribute("id",namePrefix+currentLine);
+	n.setAttribute("type",dataType);
+	n.setAttribute("placeholder",placeholder);
+	n.setAttribute("size",fieldSize);
+	var f = document.getElementById(formId);
+	f.appendChild(n);
+}
+
+/* genObjectArray()
+ * generates content for an array of objects, 
+ * where each element of the array 
+ * is an object containing the data entered in one line of the form 
+ */
+function genObjectArray() {
+	// precondition: HTML must contain <div id="div2"> element
+	// precondition: currentLine (global variable) must be set
+
+	// generate objArray from HTML form elements
+	for(i = 0; i < currentLine; i++) {
+		objArray[i] = {
+			'fname'     :document.getElementById("fname"+i).value,
+			'lname'     :document.getElementById("lname"+i).value,
+			'age'       :parseInt(document.getElementById("age"+i).value)?parseInt(document.getElementById("age"+i).value):0, 
+			'country'   :document.getElementById("country"+i).value,
+			'countryAge':function () {
+				if('China'==this.country)
+					return parseInt(this.age)+1; 
+				else 
+					return parseInt(this.age);
+				}
+		};
+	}
+
+	// display objArray
+	var divContent = "<ol start='0'>";
+	objArray.forEach(function(e) {
+		divContent += '<li>';
+		divContent += JSON.stringify(e);
+		divContent += ' ... countryAge() == ' + e.countryAge();
+		divContent += '</li>';
+	});
+	divContent += "</ol>";
+	document.getElementById("div2").innerHTML = divContent;
+}
+
+/* genTable()
+ * generates an HTML table containing localized output from 
+ */
+
+			</script>
+			
+		</body>
 
