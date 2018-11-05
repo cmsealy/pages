@@ -145,10 +145,12 @@ function addLine () {
 	// precondition: inputWidth global variable must be set
 	// precondition: call from addForm() so HTML element with id="fieldset1" exists
 	
-	addField("fieldset1", "fname", "First", "text", "Jane", inputWidth);
-	addField("fieldset1", "lname", "Last", "text", "Doe", inputWidth);
-	addField("fieldset1", "age", "Age", "number", "18", inputWidth);
-	addField("fieldset1", "country", "Country", "text", "USA", inputWidth);
+	addField("fieldset1", "gname", "Given", "text", "John", inputWidth);
+	addField("fieldset1", "sname", "Sur", "text", "Doe", inputWidth);
+	addField("fieldset1", "bday", "Age", "number", "1", inputWidth);
+	addField("fieldset1", "bmonth", "Country", "number", "1", inputWidth);
+	addField("fieldset1", "byear", "Age", "number", "1999", inputWidth);
+	addField("fieldset1", "country", "Age", "number", "18", inputWidth);
 	var newelement = document.createElement("br");
 	var fieldset1 = document.getElementById("fieldset1");
 	fieldset1.appendChild(newelement);
