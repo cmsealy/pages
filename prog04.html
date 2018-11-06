@@ -17,8 +17,6 @@
 
 		<h1>Add new input lines to HTML entry form</h1>
 		
-		<p>Enable users to add a row of fields to an HTML input form. In this code, after the HTML loads, addForm() is called. Clicking the Add Line button calls a function, addLine(), which calls addField() once for each field in the new input line. The elements, label and input, are formatted using CSS. </p>
-		
 		<button type="button" onclick="addLine();">Add Line</button>
 		<br />
 		<br />
@@ -196,9 +194,11 @@ function genObjectArray() {
 	// generate objArray from HTML form elements
 	for(i = 0; i < currentLine; i++) {
 		objArray[i] = {
-			'fname'     :document.getElementById("fname"+i).value,
-			'lname'     :document.getElementById("lname"+i).value,
-			'age'       :parseInt(document.getElementById("age"+i).value)?parseInt(document.getElementById("age"+i).value):0, 
+			'gname'     :document.getElementById("gname"+i).value,
+			'sname'     :document.getElementById("sname"+i).value,
+			'bday'      :parseInt(document.getElementById("bday"+i).value)?parseInt(document.getElementById("bday"+i).value):0, 
+			'bmonth'    :parseInt(document.getElementById("bmonth"+i).value)?parseInt(document.getElementById("bmonth"+i).value):0, 
+			'byear'     :parseInt(document.getElementById("byear"+i).value)?parseInt(document.getElementById("byear"+i).value):0, 
 			'country'   :document.getElementById("country"+i).value,
 			'countryAge':function () {
 				if('China'==this.country)
