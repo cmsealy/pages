@@ -105,26 +105,28 @@ function addForm() {
 
 	// create a new label element, and append to fieldset1
 	var newelement = document.createElement("label");
-	newelement.setAttribute("for","fname"+currentLine);
-	var textnode = document.createTextNode("First");
+	newelement.setAttribute("for","gname"+currentLine);
+	var textnode = document.createTextNode("Given Name");
 	newelement.appendChild(textnode);
 	var fieldset1 = document.getElementById("fieldset1");
 	fieldset1.appendChild(newelement);
 
 	// create a new input element, and append to fieldset1
 	var newelement = document.createElement("input");
-	newelement.setAttribute("name","fname"+currentLine);
-	newelement.setAttribute("id","fname"+currentLine);
+	newelement.setAttribute("name","gname"+currentLine);
+	newelement.setAttribute("id","gname"+currentLine);
 	newelement.setAttribute("type","text");
-	newelement.setAttribute("placeholder","Jane");
+	newelement.setAttribute("placeholder","John");
 	newelement.setAttribute("size",10);
 	if (currentLine==0) newelement.setAttribute("autofocus","autofocus");
 	var fieldset1 = document.getElementById("fieldset1");
 	fieldset1.appendChild(newelement);
 
 	// add more fields 
-	addField("fieldset1", "lname", "Last", "text", "Doe", inputWidth);
-	addField("fieldset1", "age", "Age", "number", "18", inputWidth);
+	addField("fieldset1", "sname", "Surname", "text", "Doe", inputWidth);
+	addField("fieldset1", "bday", "Birth Day", "number", "1", inputWidth);
+	addField("fieldset1", "bmonth", "Birth Month", "number", "1", inputWidth);
+	addField("fieldset1", "byear", "Birth Year", "number", "1999", inputWidth);
 	addField("fieldset1", "country", "Country", "text", "USA", inputWidth);
 
 	// add line break 
