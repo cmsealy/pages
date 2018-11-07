@@ -185,6 +185,14 @@ function genObjectArray() {
 			'byear'     :parseInt(document.getElementById("byear"+i).value)?parseInt(document.getElementById("byear"+i).value):0, 
 			'country'   :document.getElementById("country"+i).value,
 			'countryAge':function () {
+				var today = new Date();
+				var age = today.getFullYear() - year;
+				if (today.getMonth() < parseInt(document.getElementById("bmonth"+i).value)?parseInt(document.getElementById("bmonth"+i).value):0 ||
+				   (today.getMonth() == parseInt(document.getElementById("bmonth"+i).value)?parseInt(document.getElementById("bmonth"+i).value):0 && 
+				   today.getDate() < parseInt(document.getElementById("bday"+i).value)?parseInt(document.getElementById("bday"+i).value):0)) {
+  					age--;
+				}
+				
 				if('China'==this.country)
 					return parseInt(this.age)+1; 
 				else 
