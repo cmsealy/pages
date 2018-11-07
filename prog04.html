@@ -1,4 +1,6 @@
-<head>
+<!DOCTYPE html>
+<html>
+	<head>
 		<style>
 		label {
 			width: 100px;
@@ -107,7 +109,7 @@ function addForm() {
 	addField("fieldset1", "bday", "Birth Day", "number", "1", inputWidth);
 	addField("fieldset1", "bmonth", "Birth Month", "number", "1", inputWidth);
 	addField("fieldset1", "byear", "Birth Year", "number", "1999", inputWidth);
-	addField("fieldset1", "country", "Country", "text", "USA", inputWidth);
+	addField("fieldset1", "country", "Country", "datalist", "USA", inputWidth);
 
 	// add line break 
 	var newelement = document.createElement("br");
@@ -230,4 +232,4 @@ function genTable(objArray) {
 			</script>
 			
 		</body>
-
+</html>
