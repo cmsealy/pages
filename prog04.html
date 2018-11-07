@@ -225,14 +225,14 @@ function genObjectArray() {
 
 function genTable(myArray) {
     var result = "<table border=1>";
-	result += "<tr>"
-		result += "<th>Given Name</th>"
-		result += "<th>Surname</th>"
-		result += "<th>Birth Day</th>"
-		result += "<th>Birth Month</th>"
-		result += "<th>Birth Year</th>"
-		result += "<th>Country</th>"
-	result += "</tr>"
+	result += "<tr>";
+		result += "<th>Given Name</th>";
+		result += "<th>Surname</th>";
+		result += "<th>Birth Day</th>";
+		result += "<th>Birth Month</th>";
+		result += "<th>Birth Year</th>";
+		result += "<th>Country</th>";
+	result += "</tr>";
     for(var i=0; i<myArray.length; i++) {
         result += "<tr>";
         for(var j=0; j<myArray[i].length; j++){
@@ -241,7 +241,8 @@ function genTable(myArray) {
         result += "</tr>";
     }
     result += "</table>";
-
+    
+    document.getElementById("div3").innerHTML = result;
     return result;
 }
 /* genTable()
