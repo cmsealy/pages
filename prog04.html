@@ -206,12 +206,10 @@ function genObjectArray() {
 function genTable(objArray) {
     var result = "<table border=1>";
 	result += "<tr>";
-		result += "<th>Given Name</th>";
-		result += "<th>Surname</th>";
-		result += "<th>Birth Day</th>";
-		result += "<th>Birth Month</th>";
-		result += "<th>Birth Year</th>";
-		result += "<th>Country</th>";
+		result += "<th>Local Name</th>";
+		result += "<th>Local DOB</th>";
+		result += "<th>Local Age</th>";
+		result += "<th>Local Zodiac</th>";
 	result += "</tr>";
     for(var i=0; i<objArray.length; i++) {
         result += "<tr>";
