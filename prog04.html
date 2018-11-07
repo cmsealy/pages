@@ -184,6 +184,8 @@ function genObjectArray() {
 			'bmonth'    :parseInt(document.getElementById("bmonth"+i).value)?parseInt(document.getElementById("bmonth"+i).value):0, 
 			'byear'     :parseInt(document.getElementById("byear"+i).value)?parseInt(document.getElementById("byear"+i).value):0, 
 			'country'   :document.getElementById("country"+i).value,
+			//'localName':function()
+			//'localDOB':function()
 			'countryAge':function () {
 				
 				if('China'==this.country)
@@ -191,6 +193,7 @@ function genObjectArray() {
 				else 
 					return parseInt(age);
 				}
+			//'localZodiac':function()
 		};
 	}
 
@@ -199,7 +202,10 @@ function genObjectArray() {
 	objArray.forEach(function(e) {
 		divContent += '<li>';
 		divContent += JSON.stringify(e);
+		//divContent += ' ... localName() == ' + e.localName();
+		//divContent += ' ... localDOB() == ' + e.localDOB();
 		divContent += ' ... countryAge() == ' + e.countryAge();
+		//divContent += ' ... localZodiac() == ' + e.localZodiac();
 		divContent += '</li>';
 	});
 	divContent += "</ol>";
@@ -216,8 +222,12 @@ function genTable(objArray) {
 	result += "</tr>";
     for(var i=0; i<objArray.length; i++) {
         result += "<tr>";
+	//result += "<td>" + objArray[i].localName() + "</td>";
+	//result += "<td>" + objArray[i].localDOB() + "</td>";
+	//result += "<td>" + objArray[i].countryAge() + "</td>";
+	//result += "<td>" + objArray[i].localZodiac() + "</td>";
         for(var j=0; j<objArray[i].length; j++){
-            result += "<td>"+objArray[i][j]+"</td>";
+            result += "<td>" + objArray[i][j] + "</td>";
         }
         result += "</tr>";
     }
