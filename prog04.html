@@ -46,27 +46,7 @@
 		</div>
 		
 		<!-- The table, below, shows examples of data. Do not include any HTML-coded table in your code. Instead, use JavaScript to append a table to the div, above. -->
-		<table border="1">
-		  <tr>
-			<th>Local Name</th>
-			<th>Local DOB</th>
-			<th>Local Age</th>
-			<th>Local Zodiac</th>
-		  </tr>
-		  <tr>
-			<td>Deng Xiaoping</td>
-			<td>1904-08-22</td>
-			<td>115</td>
-			<td>Dragon</td>
-		  </tr>
-		  <tr>
-			<td>Dwight Eisenhower</td>
-			<td>10-14-1890</td>
-			<td>128</td>
-			<td>Libra</td>
-		  </tr>
-
-		</table>
+		
 
 		<script>
 		
@@ -223,7 +203,7 @@ function genObjectArray() {
 	document.getElementById("div2").innerHTML = divContent;
 }
 
-function genTable(myArray) {
+function genTable(objArray) {
     var result = "<table border=1>";
 	result += "<tr>";
 		result += "<th>Given Name</th>";
@@ -233,10 +213,10 @@ function genTable(myArray) {
 		result += "<th>Birth Year</th>";
 		result += "<th>Country</th>";
 	result += "</tr>";
-    for(var i=0; i<myArray.length; i++) {
+    for(var i=0; i<objArray.length; i++) {
         result += "<tr>";
-        for(var j=0; j<myArray[i].length; j++){
-            result += "<td>"+myArray[i][j]+"</td>";
+        for(var j=0; j<objArray[i].length; j++){
+            result += "<td>"+objArray[i][j]+"</td>";
         }
         result += "</tr>";
     }
