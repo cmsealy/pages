@@ -38,7 +38,7 @@
 		
 		<p>Loop through the HTML form lines and store the data into an array of objects, where each property of an object contains the data in the input field of the HTML entry form. </p>
 		
-		<button type="button" onclick="">Generate and Display Table</button>
+		<button type="button" onclick="genTable(objArray);">Generate and Display Table</button>
 		<br />
 		<br />
 		
@@ -223,6 +223,19 @@ function genObjectArray() {
 	document.getElementById("div2").innerHTML = divContent;
 }
 
+function genTable(myArray) {
+    var result = "<table border=1>";
+    for(var i=0; i<myArray.length; i++) {
+        result += "<tr>";
+        for(var j=0; j<myArray[i].length; j++){
+            result += "<td>"+myArray[i][j]+"</td>";
+        }
+        result += "</tr>";
+    }
+    result += "</table>";
+
+    return result;
+}
 /* genTable()
  * generates an HTML table containing localized output from 
  */
