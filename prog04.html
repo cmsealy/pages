@@ -186,9 +186,9 @@ function genObjectArray() {
 			'country'   :document.getElementById("country"+i).value,
 			'localName':function() {
 				if('China' == this.country)
-					return sname + " " + gname;
+					return this.sname + " " + this.gname;
 				else
-					return gname + " " + sname;
+					return this.gname + " " + this.sname;
 			}
 			'localDOB':function() {
 				if('China' == this.country)
@@ -196,7 +196,7 @@ function genObjectArray() {
 			}
 			'countryAge':function () {
 				var age;
-				if('China'==this.country)
+				if('China' == this.country)
 					return parseInt(age)+1; 
 				else 
 					return parseInt(age);
