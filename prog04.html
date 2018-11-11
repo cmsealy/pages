@@ -289,7 +289,7 @@ function genObjectArray() {
 	objArray.forEach(function(e) {
 		divContent += '<li>';
 		divContent += JSON.stringify(e);
-		divContent += ' ... localName() == ' + e.localName();
+		//divContent += ' ... localName() == ' + e.localName();
 		//divContent += ' ... localDOB() == ' + e.localDOB();
 		//divContent += ' ... countryAge() == ' + e.countryAge();
 		divContent += ' ... localZodiac() == ' + e.localZodiac();
@@ -311,7 +311,7 @@ function genTable(objArray) {
     for(var i=0; i<objArray.length; i++) {
         result += "<tr>";
 	   result += "<th scope='row'>" + (i+1) + "</th>"
-	   result += "<td>" + objArray[i].localName() + "</td>";
+	   //result += "<td>" + objArray[i].localName() + "</td>";
 	   //result += "<td>" + objArray[i].localDOB() + "</td>";
 	   //result += "<td>" + objArray[i].countryAge() + "</td>";
 	   result += "<td>" + objArray[i].localZodiac() + "</td>";
