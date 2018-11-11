@@ -184,7 +184,12 @@ function genObjectArray() {
 			'bmonth'    :parseInt(document.getElementById("bmonth"+i).value)?parseInt(document.getElementById("bmonth"+i).value):0, 
 			'byear'     :parseInt(document.getElementById("byear"+i).value)?parseInt(document.getElementById("byear"+i).value):0, 
 			'country'   :document.getElementById("country"+i).value,
-			//'localName':function()
+			'localName':function() {
+				if('China' == this.country)
+					return sname + " " + gname;
+				else
+					return gname + " " + sname;
+			}
 			//'localDOB':function()
 			'countryAge':function () {
 				var age;
