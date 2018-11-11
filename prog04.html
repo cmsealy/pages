@@ -186,7 +186,7 @@ function genObjectArray() {
 			'country'   :document.getElementById("country"+i).value,
 			'countryAge':function () {
 				var today = new Date();
-				var age = today.getFullYear() - this.byear);
+				var age = today.getFullYear() - this.byear;
 				if ((today.getMonth() < this.bmonth) || ((today.getMonth() == this.bmonth) && (today.getDate() < this.bday))) {
   					age--;
 				}
