@@ -186,13 +186,15 @@ function genObjectArray() {
 			'country'   :document.getElementById("country"+i).value,
 			'localName':function() {
 				if('China' == this.country)
-					return this.sname + " " + this.gname;
+					return this.sname + ' ' + this.gname;
 				else
-					return this.gname + " " + this.sname;
+					return this.gname + ' ' + this.sname;
 			}
 			'localDOB':function() {
 				if('China' == this.country)
-			
+					return this.byear + '/' + this.bmonth + '/' + this.bday
+				else
+					return this.bmonth + '/' + this.bday + '/' + this.byear
 			}
 			'countryAge':function () {
 				var age;
