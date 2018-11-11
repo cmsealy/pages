@@ -192,9 +192,9 @@ function genObjectArray() {
 			}
 			'localDOB':function() {
 				if('China' == this.country)
-					return this.byear + '/' + this.bmonth + '/' + this.bday
+					return this.byear + '/' + this.bmonth + '/' + this.bday;
 				else
-					return this.bmonth + '/' + this.bday + '/' + this.byear
+					return this.bmonth + '/' + this.bday + '/' + this.byear;
 			}
 			'countryAge':function () {
 				var age;
@@ -202,8 +202,12 @@ function genObjectArray() {
 					return parseInt(age)+1; 
 				else 
 					return parseInt(age);
-				}
-			//'localZodiac':function()
+			}
+			'localZodiac':function() {
+				
+				return 1;
+					
+			}
 		};
 	}
 
