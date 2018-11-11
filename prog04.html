@@ -190,6 +190,10 @@ function genObjectArray() {
 				if ((today.getMonth() < this.bmonth) || ((today.getMonth() == this.bmonth) && (today.getDate() < this.bday))) {
   					age--;
 				}
+				if('China' == this.country)
+					return parseInt(age)+1; 
+				else 
+					return parseInt(age);
 			}
 			
 			
