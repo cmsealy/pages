@@ -224,17 +224,19 @@ function genObjectArray() {
 function genTable(objArray) {
     var result = "<table class= 'table table-striped'>";
 	result += "<tr>";
-		result += "<th>Local Name</th>";
-		result += "<th>Local DOB</th>";
-		result += "<th>Local Age</th>";
-		result += "<th>Local Zodiac</th>";
+		result += "<th scope='col'>#</th>";
+		result += "<th scope='col'>Local Name</th>";
+		result += "<th scope='col'>Local DOB</th>";
+		result += "<th scope='col'>Local Age</th>";
+		result += "<th scope='col'>Local Zodiac</th>";
 	result += "</tr>";
     for(var i=0; i<objArray.length; i++) {
         result += "<tr>";
-	//result += "<td>" + objArray[i].localName() + "</td>";
-	//result += "<td>" + objArray[i].localDOB() + "</td>";
-	result += "<td>" + objArray[i].countryAge() + "</td>";
-	//result += "<td>" + objArray[i].localZodiac() + "</td>";
+	   result += "<th scope='row'>i+1</th>"
+	   //result += "<td>" + objArray[i].localName() + "</td>";
+	   //result += "<td>" + objArray[i].localDOB() + "</td>";
+	   result += "<td>" + objArray[i].countryAge() + "</td>";
+	   //result += "<td>" + objArray[i].localZodiac() + "</td>";
         for(var j=0; j<objArray[i].length; j++){
             result += "<td>" + objArray[i][j] + "</td>";
         }
