@@ -190,12 +190,6 @@ function genObjectArray() {
 				else
 					return this.gname + ' ' + this.sname;
 			}
-			'localDOB':function() {
-				if('China' == this.country)
-					return this.byear + '/' + this.bmonth + '/' + this.bday;
-				else
-					return this.bmonth + '/' + this.bday + '/' + this.byear;
-			}
 			'countryAge':function () {
 				var today = new Date();
 				var age = today.getFullYear() - parseInt(document.getElementById("byear"+i).value);
