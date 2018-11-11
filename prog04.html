@@ -189,12 +189,12 @@ function genObjectArray() {
 			'bmonth'    :parseInt(document.getElementById("bmonth"+i).value)?parseInt(document.getElementById("bmonth"+i).value):0, 
 			'byear'     :parseInt(document.getElementById("byear"+i).value)?parseInt(document.getElementById("byear"+i).value):0, 
 			'country'   :document.getElementById("country"+i).value,
-			//'localName':function() {
-				//if('China' == this.country)
-					//return this.sname + ' ' + this.gname;
-				//else
-					//return this.gname + ' ' + this.sname;
-			//}
+			'localName':function() {
+				if('China' == this.country)
+					return this.sname + ' ' + this.gname;
+				else
+					return this.gname + ' ' + this.sname;
+			}
 			//'localDOB':function() {
 				//if('China' == this.country)
 					//return this.byear + '/' + this.bmonth + '/' + this.bday;
@@ -289,7 +289,7 @@ function genObjectArray() {
 	objArray.forEach(function(e) {
 		divContent += '<li>';
 		divContent += JSON.stringify(e);
-		//divContent += ' ... localName() == ' + e.localName();
+		divContent += ' ... localName() == ' + e.localName();
 		//divContent += ' ... localDOB() == ' + e.localDOB();
 		//divContent += ' ... countryAge() == ' + e.countryAge();
 		divContent += ' ... localZodiac() == ' + e.localZodiac();
@@ -311,7 +311,7 @@ function genTable(objArray) {
     for(var i=0; i<objArray.length; i++) {
         result += "<tr>";
 	   result += "<th scope='row'>" + (i+1) + "</th>"
-	   //result += "<td>" + objArray[i].localName() + "</td>";
+	   result += "<td>" + objArray[i].localName() + "</td>";
 	   //result += "<td>" + objArray[i].localDOB() + "</td>";
 	   //result += "<td>" + objArray[i].countryAge() + "</td>";
 	   result += "<td>" + objArray[i].localZodiac() + "</td>";
