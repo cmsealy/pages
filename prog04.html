@@ -184,12 +184,12 @@ function genObjectArray() {
 			'bmonth'    :parseInt(document.getElementById("bmonth"+i).value)?parseInt(document.getElementById("bmonth"+i).value):0, 
 			'byear'     :parseInt(document.getElementById("byear"+i).value)?parseInt(document.getElementById("byear"+i).value):0, 
 			'country'   :document.getElementById("country"+i).value,
-			'localDOB':function() {
-				if('China' == this.country)
-					return this.byear + '/' + this.bmonth + '/' + this.bday;
-				else
-					return this.bmonth + '/' + this.bday + '/' + this.byear;
-			}
+			//'localDOB':function() {
+				//if('China' == this.country)
+					//return this.byear + '/' + this.bmonth + '/' + this.bday;
+				//else
+					//return this.bmonth + '/' + this.bday + '/' + this.byear;
+			//}
 			'countryAge':function () {
 				var today = new Date();
 				var age = today.getFullYear() - this.byear;
@@ -212,7 +212,7 @@ function genObjectArray() {
 		divContent += '<li>';
 		divContent += JSON.stringify(e);
 		//divContent += ' ... localName() == ' + e.localName();
-		divContent += ' ... localDOB() == ' + e.localDOB();
+		//divContent += ' ... localDOB() == ' + e.localDOB();
 		divContent += ' ... countryAge() == ' + e.countryAge();
 		//divContent += ' ... localZodiac() == ' + e.localZodiac();
 		divContent += '</li>';
@@ -232,7 +232,7 @@ function genTable(objArray) {
     for(var i=0; i<objArray.length; i++) {
         result += "<tr>";
 	//result += "<td>" + objArray[i].localName() + "</td>";
-	result += "<td>" + objArray[i].localDOB() + "</td>";
+	//result += "<td>" + objArray[i].localDOB() + "</td>";
 	result += "<td>" + objArray[i].countryAge() + "</td>";
 	//result += "<td>" + objArray[i].localZodiac() + "</td>";
         for(var j=0; j<objArray[i].length; j++){
