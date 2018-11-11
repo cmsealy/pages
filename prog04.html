@@ -184,6 +184,15 @@ function genObjectArray() {
 			'bmonth'    :parseInt(document.getElementById("bmonth"+i).value)?parseInt(document.getElementById("bmonth"+i).value):0, 
 			'byear'     :parseInt(document.getElementById("byear"+i).value)?parseInt(document.getElementById("byear"+i).value):0, 
 			'country'   :document.getElementById("country"+i).value,
+			'countryAge':function () {
+				var today = new Date();
+				var age = today.getFullYear() - parseInt(document.getElementById("byear"+i).value);
+				if (today.getMonth() < parseInt(document.getElementById("bmonth"+i).value) ||
+				   (today.getMonth() == parseInt(document.getElementById("bmonth"+i).value) && 
+				   today.getDate() < parseInt(document.getElementById("bday"+i).value))) {
+  					age--;
+				}
+			}
 			'localName':function() {
 				if('China' == this.country)
 					return this.sname + ' ' + this.gname;
