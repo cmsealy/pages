@@ -232,7 +232,7 @@ function genTable(objArray) {
 	result += "</tr>";
     for(var i=0; i<objArray.length; i++) {
         result += "<tr>";
-	   result += "<th scope='row'>i+1</th>"
+	   result += "<th scope='row'>" + i+1 + "</th>"
 	   //result += "<td>" + objArray[i].localName() + "</td>";
 	   //result += "<td>" + objArray[i].localDOB() + "</td>";
 	   result += "<td>" + objArray[i].countryAge() + "</td>";
