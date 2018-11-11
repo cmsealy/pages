@@ -197,7 +197,14 @@ function genObjectArray() {
 					return this.bmonth + '/' + this.bday + '/' + this.byear;
 			}
 			'countryAge':function () {
-				var age;
+				var today = new Date();
+				var age = today.getFullYear() - parseInt(document.getElementById("byear"+i).value);
+				if (today.getMonth() < parseInt(document.getElementById("bmonth"+i).value) ||
+				   (today.getMonth() == parseInt(document.getElementById("bmonth"+i).value) && 
+				   today.getDate() < parseInt(document.getElementById("bday"+i).value))) {
+  					age--;
+				}
+				
 				if('China' == this.country)
 					return parseInt(age)+1; 
 				else 
