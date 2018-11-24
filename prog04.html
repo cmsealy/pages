@@ -169,14 +169,12 @@ function addField(formId, namePrefix, labelText, dataType, placeholder, fieldSiz
 		f.appendChild(n);
 		
 		for (i = 0; i < 2; i++) {
-			
 			var countryText;
-			
 			if (i == 0)
 				countryText = "USA";
 			else
 				countryText = "China";
-		
+			
 			n = document.createElement("option");
 			n.setAttribute("value",countryText);
 			n.innerHTML = countryText;
