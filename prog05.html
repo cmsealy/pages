@@ -1,58 +1,108 @@
 <!DOCTYPE HTML>
 <html>
-<meta charset="UTF-8">
-<body>
-    <p id="p1"></p>
-    <p id="p2"></p>
-    <div id="d3"></div>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style>
+		label {
+			width: 100px;
+			text-align: right;
+			padding-right: 10px;
+			display: inline-block;
+		}
+		input[type="number"] {
+			width:80px;
+			margin-right: 25px;
+		}
+		</style>
+	</head>
+	<body>
+    		<p id="p1"></p>
+    		<p id="p2"></p>
+    		<div id="d3"></div>
 
-<script type="text/javascript>
-    function Person(name, street) {
-        this.name = name;
-        this.street = street;
-        this.info = function(){
-            return "My name is " + this.name + ", and I live at " + this.street + ".";
-        }
-    }
-jane = new Person("Jane Doe","1234 Fifth Avenue");
-document.getElementById("p1").innerHTML = jane.info();
-document.getElementById("p2").innerHTML = JSON.stringify(jane);
-function Table(thArr, elemId) {
-  this.thArr = thArr;
-  this.tbl = null;
-  this.makeTable = function(){
+	<script type="text/javascript>
+		     	var currentLine = 0;
+		     	var inputWidth  = 10;
+		      	var objArray    = [];
+		      
+    		function Person(name, street) {
+        		this.name = name;
+        		this.street = street;
+        		this.info = function(){
+            			return "My name is " + this.name + ", and I live at " + this.street + ".";
+        		}
+    		}
+		jane = new Person("Jane Doe","1234 Fifth Avenue");
+		document.getElementById("p1").innerHTML = jane.info();
+		document.getElementById("p2").innerHTML = JSON.stringify(jane);
+		function Table(thArr, elemId) {
+  			this.thArr = thArr;
+  			this.tbl = null;
+  			this.makeTable = function(){
     
     // make/append new table element
-  	var el = document.createElement("table");
-	  el.setAttribute("id","table1");
-    el.setAttribute("border","1");
-	  var root = 
-        document.getElementById(elemId);
-	  root.appendChild(el);
+  				var el = document.createElement("table");
+	  			el.setAttribute("id","table1");
+    				el.setAttribute("border","1");
+	  			var root = document.getElementById(elemId);
+	  			root.appendChild(el);
     // make table element the new root
-    root = el;
+    				root = el;
     
     // make/append table row for headers
-    var el = document.createElement("tr");
-	  el.setAttribute("id","headerRow");
-	  root.appendChild(el);
+    				var el = document.createElement("tr");
+	  			el.setAttribute("id","headerRow");
+	  			root.appendChild(el);
     // make table row the new root
-    root = el;
+    				root = el;
     
     // make/append table headers
-    for (i=0; i<thArr.length; i++) {
-      var thElem = 
-          document.createElement("th");
-	    var t = document.createTextNode(thArr[i]);
-	    thElem.appendChild(t);
-      root.appendChild(thElem);
-    }
+    				for (i=0; i<thArr.length; i++) {
+      					var thElem = document.createElement("th");
+	    				var t = document.createTextNode(thArr[i]);
+	    				thElem.appendChild(t);
+      					root.appendChild(thElem);
+    				}
 
-  }
-}
-thArr = ["name", "street"];
-tbl = new Table(thArr, "d3");
-tbl.makeTable();
-</script>
-</body>
+  			}
+		}
+		thArr = ["name", "street"];
+		tbl = new Table(thArr, "d3");
+		tbl.makeTable();
+					   
+		class Table{
+			static write(){
+					   
+    			var result = "<table class= 'table table-striped'>";
+			result += "<tr>";
+			result += "<th scope='col'>#</th>";
+			result += "<th scope='col'>Local Name</th>";
+			result += "<th scope='col'>Local DOB</th>";
+			result += "<th scope='col'>Local Age</th>";
+			result += "<th scope='col'>Local Zodiac</th>";
+			result += "</tr>";
+			
+    			for(var i=0; i<objArray.length; i++) {
+        			result += "<tr>";
+	   			result += "<th scope='row'>" + (i+1) + "</th>"
+	   			result += "<td>" + objArray[i].localName() + "</td>";
+	   			result += "<td>" + objArray[i].localDOB() + "</td>";
+	   			result += "<td>" + objArray[i].countryAge() + "</td>";
+	   			result += "<td>" + objArray[i].localZodiac() + "</td>";
+        			for(var j=0; j<objArray[i].length; j++){
+            				result += "<td>" + objArray[i][j] + "</td>";
+        			}
+        			result += "</tr>";
+    			}
+    			result += "</table>";
+    
+    			document.getElementById("div3").innerHTML = result;
+			}
+		}
+	</script>
+	</body>
 </html>
