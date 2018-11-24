@@ -5,6 +5,16 @@
 </body>
 
 <script type="text/javascript>
+    function Person(name, street) {
+        this.name = name;
+        this.street = street;
+        this.info = function(){
+            return "My name is " + this.name + ", and I live at " + this.street + ".";
+        }
+    }
+jane = new Person("Jane Doe","1234 Fifth Avenue");
+document.getElementById("p1").innerHTML = jane.info();
+document.getElementById("p2").innerHTML = JSON.stringify(jane);
 function Table(thArr, elemId) {
   this.thArr = thArr;
   this.tbl = null;
