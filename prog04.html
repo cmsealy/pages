@@ -159,16 +159,43 @@ function addField(formId, namePrefix, labelText, dataType, placeholder, fieldSiz
 	n.appendChild(t);
 	var f = document.getElementById(formId);
 	f.appendChild(n);
+	
+	if (namePrefix == "country") {
+		var n = document.createElement("select");
+		n.setAttribute("name",namePrefix+currentLine);
+		n.setAttribute("id",namePrefix+currentLine);
+		n.setAttribute("class","input-sm");
+		var f = document.getElementById(formId);
+		f.appendChild(n);
+		
+		for (i = 0; i < 2; i++) {
+			
+			var countryText;
+			
+			if (i == 0)
+				countryText = "USA";
+			else
+				countryText = "China";
+		
+			n = document.createElement("option");
+			n.setAttribute("value",countryText);
+			n.innerHTML = countryText;
+			f = document.getElementById(namePrefix+currentLine);
+			f.appendChild(n);
+		}
+		
+	}
+	else {
 
-	// create a new input element, and append to form
-	var n = document.createElement("input");
-	n.setAttribute("name",namePrefix+currentLine);
-	n.setAttribute("id",namePrefix+currentLine);
-	n.setAttribute("type",dataType);
-	n.setAttribute("placeholder",placeholder);
-	n.setAttribute("size",fieldSize);
-	var f = document.getElementById(formId);
-	f.appendChild(n);
+		var n = document.createElement("input");
+		n.setAttribute("name",namePrefix+currentLine);
+		n.setAttribute("id",namePrefix+currentLine);
+		n.setAttribute("type",dataType);
+		n.setAttribute("placeholder",placeholder);
+		n.setAttribute("size",fieldSize);
+		var f = document.getElementById(formId);
+		f.appendChild(n);
+	}
 }
 
 /* genObjectArray()
