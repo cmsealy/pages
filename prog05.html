@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<title>Prog05 Corban Seal</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -29,50 +30,7 @@
 		     	var inputWidth  = 10;
 		      	var objArray    = [];
 		      
-    		function Person(name, street) {
-        		this.name = name;
-        		this.street = street;
-        		this.info = function(){
-            			return "My name is " + this.name + ", and I live at " + this.street + ".";
-        		}
-    		}
-		jane = new Person("Jane Doe","1234 Fifth Avenue");
-		document.getElementById("p1").innerHTML = jane.info();
-		document.getElementById("p2").innerHTML = JSON.stringify(jane);
-		function Table(thArr, elemId) {
-  			this.thArr = thArr;
-  			this.tbl = null;
-  			this.makeTable = function(){
-    
-    // make/append new table element
-  				var el = document.createElement("table");
-	  			el.setAttribute("id","table1");
-    				el.setAttribute("border","1");
-	  			var root = document.getElementById(elemId);
-	  			root.appendChild(el);
-    // make table element the new root
-    				root = el;
-    
-    // make/append table row for headers
-    				var el = document.createElement("tr");
-	  			el.setAttribute("id","headerRow");
-	  			root.appendChild(el);
-    // make table row the new root
-    				root = el;
-    
-    // make/append table headers
-    				for (i=0; i<thArr.length; i++) {
-      					var thElem = document.createElement("th");
-	    				var t = document.createTextNode(thArr[i]);
-	    				thElem.appendChild(t);
-      					root.appendChild(thElem);
-    				}
-
-  			}
-		}
-		thArr = ["name", "street"];
-		tbl = new Table(thArr, "d3");
-		tbl.makeTable();
+    		
 					   
 		class Table{
 			static write(){
