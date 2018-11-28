@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Prog05 Corban Seal</title>
-		<meta charset="UTF-8">
+		//I used Joshua Groeschen's (jjgroesc) Prog05 to help understand the format because I didn't understand
+		//how to set it up at first.
+		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -20,17 +21,279 @@
 		}
 		</style>
 	</head>
-	<body>
-    		<p id="p1"></p>
-    		<p id="p2"></p>
-    		<div id="d3"></div>
+	<body onload="Input.addForm();">
+    		
+		<h1>Add new input lines to HTML entry form</h1>
+		
+		<button type="button" onclick="Input.addLine();">Add Line</button>
+		<br />
+		<br />
+		
+		<div id="div1">
+		</div>
+		
+		<h1>Generate array of objects</h1>
+		
+		<p>Loop through the HTML form lines and store the data into an array of objects, where each property of an object contains the data in the input field of the HTML entry form. </p>
+		
+		<button type="button" onclick="Person.createArray();">Generate and Display Array of Objects</button>
+		<br />
+		
+		<div id="div2">
+		</div>
+		
+		<h1>Display table containing data from array of objects</h1>
+		
+		<p>Loop through the HTML form lines and store the data into an array of objects, where each property of an object contains the data in the input field of the HTML entry form. </p>
+		
+		<button type="button" onclick="table.write();">Generate and Display Table</button>
+		<br />
+		<br />
+		
+		<div id="div3">
+		</div>
 
 	<script type="text/javascript>
-		     	var currentLine = 0;
-		     	var inputWidth  = 10;
-		      	var objArray    = [];
 		      
+		var currentLine = 0;
+		var inputWidth  = 10;
+		var objArray    = [];
+		      
+		class Input{
+		      
+		        addForm() {
+				// create a new form element, and append to div1
+				var newelement = document.createElement("form");
+				newelement.setAttribute("id","form1");
+				var div1 = document.getElementById("div1");
+				div1.appendChild(newelement);
+						 
+				// create a new fieldset element, and append to form1
+				var newelement = document.createElement("fieldset");
+				newelement.setAttribute("id","fieldset1");
+				var form1 = document.getElementById("form1");
+				form1.appendChild(newelement);
+						   
+				// create a new legend element, and append to fieldset1
+				var newelement = document.createElement("legend");
+				var textnode = document.createTextNode("People ");
+				newelement.appendChild(textnode);
+				var fieldset1 = document.getElementById("fieldset1");
+				fieldset1.appendChild(newelement);
+							   
+				// create a new label element, and append to fieldset1
+				var newelement = document.createElement("label");
+				newelement.setAttribute("for","gname"+currentLine);
+				var textnode = document.createTextNode("Given Name");
+				newelement.appendChild(textnode);
+				var fieldset1 = document.getElementById("fieldset1");
+				fieldset1.appendChild(newelement);
+							   
+				// create a new input element, and append to fieldset1
+				var newelement = document.createElement("input");
+				newelement.setAttribute("name","gname"+currentLine);
+				newelement.setAttribute("id","gname"+currentLine);
+				newelement.setAttribute("type","text");
+				newelement.setAttribute("placeholder","John");
+				newelement.setAttribute("size",10);
+				if (currentLine==0) newelement.setAttribute("autofocus","autofocus");
+				var fieldset1 = document.getElementById("fieldset1");
+				fieldset1.appendChild(newelement);
+							   
+				// add more fields 
+				addField("fieldset1", "sname", "Surname", "text", "Doe", inputWidth);
+				addField("fieldset1", "bday", "Birth Day", "number", "1", inputWidth);
+				addField("fieldset1", "bmonth", "Birth Month", "number", "1", inputWidth);
+				addField("fieldset1", "byear", "Birth Year", "number", "1999", inputWidth);
+				addField("fieldset1", "country", "Country", "text", "USA", inputWidth);
+								 
+				// add line break 
+				var newelement = document.createElement("br");
+				var fieldset1 = document.getElementById("fieldset1");
+				fieldset1.appendChild(newelement);
+							   
+				// increment line counter
+				currentLine++;
+			}
+		      
+		        static addLine() {
+				this.addField("fieldset1", "gname", "Given Name", "text", "John", inputWidth);
+				this.addField("fieldset1", "sname", "Surname", "text", "Doe", inputWidth);
+				this.addField("fieldset1", "bday", "Birth Day", "number", "1", inputWidth);
+				this.addField("fieldset1", "bmonth", "Birth Month", "number", "1", inputWidth);
+				this.addField("fieldset1", "byear", "Birth Year", "number", "1999", inputWidth);
+				this.addField("fieldset1", "country", "Country", "text", "USA", inputWidth);
+				var newelement = document.createElement("br");
+				var fieldset1 = document.getElementById("fieldset1");
+				fieldset1.appendChild(newelement);
+				currentLine++;
+			}
+										   
+			static addField(formId, namePrefix, labelText, dataType, placeholder, fieldSize) {
+				// create a new label element, and append to form (or fieldset)
+				var n = document.createElement("label");
+				n.setAttribute("for",namePrefix+currentLine);
+				var t = document.createTextNode(labelText + " " );
+				n.appendChild(t);
+				var f = document.getElementById(formId);
+				f.appendChild(n);
+	
+				if (namePrefix == "country") {
+					var n = document.createElement("select");
+					n.setAttribute("name",namePrefix+currentLine);
+					n.setAttribute("id",namePrefix+currentLine);
+					n.setAttribute("class","input-sm");
+					var f = document.getElementById(formId);
+					f.appendChild(n);
+		
+					for (i = 0; i < 2; i++) {
+						var countryText;
+						if (i == 0)
+							countryText = "USA";
+						else
+							countryText = "China";
+			
+						n = document.createElement("option");
+						n.setAttribute("value",countryText);
+						n.innerHTML = countryText;
+						f = document.getElementById(namePrefix+currentLine);
+						f.appendChild(n);
+					}
+				}
+				else {
+					var n = document.createElement("input");
+					n.setAttribute("name",namePrefix+currentLine);
+					n.setAttribute("id",namePrefix+currentLine);
+					n.setAttribute("type",dataType);
+					n.setAttribute("placeholder",placeholder);
+					n.setAttribute("size",fieldSize);
+					var f = document.getElementById(formId);
+					f.appendChild(n);
+				}
+			}
+		}
     		
+		class Person{
+										   
+		        constructor(i){
+		        	this.gname = document.getElementById("gname"+i).value,
+				this.sname = document.getElementById("sname"+i).value,
+				this.bday = parseInt(document.getElementById("bday"+i).value)?parseInt(document.getElementById("bday"+i).value):0,
+				this.bmonth = parseInt(document.getElementById("bmonth"+i).value)?parseInt(document.getElementById("bmonth"+i).value):0,
+				this.byear = parseInt(document.getElementById("byear"+i).value)?parseInt(document.getElementById("byear"+i).value):0,
+				this.country = document.getElementById("country"+i).value 
+				this.localName = function(){
+					if('China' == this.country)
+						return this.sname + ' ' + this.gname;
+					else
+						return this.gname + ' ' + this.sname;			
+				},
+				this.localAge = function () {
+					var today = new Date();
+					var age = today.getFullYear() - this.byear;
+					if ((today.getMonth() < this.bmonth) || ((today.getMonth() == this.bmonth) && (today.getDate() < this.bday))) {
+  						age--;
+					}
+					if('China' == this.country)
+						return parseInt(age)+1; 
+					else 
+						return parseInt(age);
+				}
+		        }
+										
+			static createArray() {
+				for(var i = 0; i < index; i++) {
+					objArray[i] = new Person(i);
+				}
+				// display objArray
+				var divContent = "<ol start='0'>";
+				objArray.forEach(function(e) {
+					divContent += '<li>';
+					divContent += JSON.stringify(e);
+					divContent += ' ... localName() == ' + e.localName();
+					divContent += ' ... localDOB() == ' + e.localDOB();
+					divContent += ' ... countryAge() == ' + e.countryAge();
+					divContent += ' ... localZodiac() == ' + e.localZodiac();
+					divContent += '</li>';
+				});
+				divContent += "</ol>";
+				document.getElementById("div2").innerHTML = divContent;
+			}
+		}
+		
+		Person.prototype.localDOB = function(){
+			if('China' == this.country)
+				return this.byear + '/' + this.bmonth + '/' + this.bday;
+			else
+				return this.bmonth + '/' + this.bday + '/' + this.byear;
+		}
+										
+		Object.prototype.localZodiac = function(){
+			if('China' == this.country){
+				var z = 1;
+				var j = 0;
+				for(j = 1921; j < this.byear; j++){
+					z++;
+				}
+					
+				while(z > 12){
+					z = z - 12;
+				}
+		
+				if(z == 1){
+					return "Rooster";
+				}else if(z == 2){
+					return "Dog";
+				}else if(z == 3){
+					return "Pig";
+				}else if(z == 4){
+					return "Rat";
+				}else if(z == 5){
+					return "Ox";
+				}else if(z == 6){
+					return "Tiger";
+				}else if(z == 7){
+					return "Rabbit";
+				}else if(z == 8){
+					return "Dragon";
+				}else if(z == 9){
+					return "Snake";
+				}else if(z == 10){
+					return "Horse";
+				}else if(z == 11){
+					return "Goat";
+				}else{
+					return "Monkey";
+				}
+			}
+			else{
+				if(((this.bmonth == 1) && (this.bday > 19)) || ((this.bmonth == 2) && (this.bday < 19))){
+					return "Aquarius";
+				}else if(((this.bmonth == 2) && (this.bday > 18)) || ((this.bmonth == 3) && (this.bday < 21))){
+					return "Pisces";
+				}else if(((this.bmonth == 3) && (this.bday > 20)) || ((this.bmonth == 4) && (this.bday < 20))){
+					return "Aries";
+				}else if(((this.bmonth == 4) && (this.bday > 19)) || ((this.bmonth == 5) && (this.bday < 21))){
+					return "Taurus";
+				}else if(((this.bmonth == 5) && (this.bday > 20)) || ((this.bmonth == 6) && (this.bday < 21))){
+					return "Gemini";
+				}else if(((this.bmonth == 6) && (this.bday > 20)) || ((this.bmonth == 7) && (this.bday < 23))){
+					return "Cancer";
+				}else if(((this.bmonth == 7) && (this.bday > 22)) || ((this.bmonth == 8) && (this.bday < 23))){
+					return "Leo";
+				}else if(((this.bmonth == 8) && (this.bday > 22)) || ((this.bmonth == 9) && (this.bday < 23))){
+					return "Virgo";
+				}else if(((this.bmonth == 9) && (this.bday > 22)) || ((this.bmonth == 10) && (this.bday < 23))){
+					return "Libra";
+				}else if(((this.bmonth == 10) && (this.bday > 22)) || ((this.bmonth == 11) && (this.bday < 22))){
+					return "Scorpio";
+				}else if(((this.bmonth == 11) && (this.bday > 21)) || ((this.bmonth == 12) && (this.bday < 22))){
+					return "Sagittarius";
+				}else{
+					return "Capricorn";
+				}
+			}
+		}
 					   
 		class Table{
 			static write(){
